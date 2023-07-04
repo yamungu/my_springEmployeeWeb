@@ -8,14 +8,15 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin
 @ComponentScan
 @RestController
-    @RequestMapping("/api/v1")
+@RequestMapping("/api/v1/employee")
 public class EmployeeController {
     @Autowired
     private EmployeeServices employeeServices;
 
-    @GetMapping("/employee")
+    @GetMapping
     public List<Employee>getAll(){
         return employeeServices.getAll();}
 
@@ -24,7 +25,7 @@ public class EmployeeController {
         return employeeServices.getEmployeeById(id);
     }
 
-    @PostMapping("/employee")
+    @PostMapping
     public void create(@RequestBody Employee employee){
         employeeServices.create(employee);
     }
@@ -36,11 +37,6 @@ public class EmployeeController {
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Integer id){employeeServices.delete(id);}
-
-
-
-
-
 
 }
 
